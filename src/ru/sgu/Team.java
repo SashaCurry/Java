@@ -5,11 +5,11 @@ public interface Team {
     public void setName(String newName);
 
     public void getPlayers();
-    public void addPlayer(String newPlayer);
-    public void removePlayer(String oldPlayer);
+    public void addPlayer(Person newPlayer);
+    public void removePlayer(Person oldPlayer);
 
     public void getCoach();
-    public void setCoach(String newCoach);
+    public void setCoach(Person newCoach);
 
     public void getHomeStadium();
     public void setHomeStadium(String newHomeStadium);
