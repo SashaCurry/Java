@@ -1,6 +1,5 @@
 package ru.sgu;
 
-import java.util.Arrays;
 
 public class Person implements Cloneable {
     String name;
@@ -30,7 +29,7 @@ public class Person implements Cloneable {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Object clone() {
+        return new Person(this.name, this.surname);
     }
 }

@@ -2,11 +2,13 @@ package ru.sgu;
 
 import java.util.Arrays;
 
-public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<TeamEuroLeague> {
+public class TeamEuroLeague extends AbstractTeam implements iTeam, Comparable<TeamEuroLeague>, Cloneable {
+    final String leagueName = "Евролига";
+
     public TeamEuroLeague(String name, String homeStadium) {
         this.name = name;
         this.homeStadium = homeStadium;
-        this.league = "Евролига";
+        this.league = leagueName;
         this.stats = new int[] {0, 0};
     }
 
@@ -16,7 +18,6 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
     @Override
     public void setName(String newName) {
         this.name = newName;
-        System.out.println("Команда успешно переименована! Новое название команды: " + this.name);
     }
 
     @Override
@@ -27,19 +28,15 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
     }
     @Override
     public void addPlayer(Person newPlayer) {
-        if (!players.contains(newPlayer)) {
+        if (!players.contains(newPlayer))
             players.add(newPlayer);
-            System.out.println("Игрок " + newPlayer + " успешно добавлен в команду!");
-        }
         else
             System.out.println("Игрок " + newPlayer + " уже состоит в команде!");
     }
     @Override
     public void removePlayer(Person oldPlayer) {
-        if (players.contains(oldPlayer)) {
+        if (players.contains(oldPlayer))
             players.remove(oldPlayer);
-            System.out.println("Игрок " + oldPlayer + " успешно исключён из команды!");
-        }
         else
             System.out.println("Игрок " + oldPlayer + " не состоит в команде!");
     }
@@ -50,10 +47,8 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
     }
     @Override
     public void setCoach(Person newCoach) {
-        if (this.coach == null || !this.coach.equals(newCoach)) {
+        if (this.coach == null || !this.coach.equals(newCoach))
             this.coach = newCoach;
-            System.out.println("Тренер успешно сменён! Новый тренер: " + this.coach);
-        }
         else
             System.out.println("Данный человек уже является тренером команды!");
     }
@@ -66,10 +61,8 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
     public void setHomeStadium(String newHomeStadium) {
         if (this.homeStadium.equals(newHomeStadium))
             System.out.println("Данная арена уже является стадионом команды!");
-        else {
+        else
             this.homeStadium = newHomeStadium;
-            System.out.println("Стадион успешно сменён! Новый стадион: " + this.homeStadium);
-        }
     }
 
     @Override
@@ -80,7 +73,6 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
     public void setStats(int numWins, int numLose) {
         this.stats[0] = numWins;
         this.stats[1] = numLose;
-        System.out.println("Статистика команды успешно изменена! Новая статистика: " + stats[0] + "-" + stats[1]);
     }
 
     @Override
@@ -124,6 +116,16 @@ public class TeamEuroLeague extends AbstractTeam implements Team, Comparable<Tea
         res.append("\nСтатистика: ").append(stats[0]).append("-").append(stats[1]);
         res.append("\nЛига: ").append(league);
         return res.toString();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        TeamEuroLeague cloneTeam = new TeamEuroLeague(this.name, this.homeStadium);
+        for (Person player : this.players)
+            cloneTeam.addPlayer((Person) player.clone());
+        cloneTeam.coach = (Person) coach.clone();
+        cloneTeam.stats = this.stats;
+        return cloneTeam;
     }
 
 
