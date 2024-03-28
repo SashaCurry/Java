@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.*;
 
 public class Subtask2 {
-    public static List<Integer> inputData() throws Exception{
+    public List<Integer> inputData() throws Exception{
         Scanner in = new Scanner(System.in);
         System.out.print("Введите целочисленные значения: ");
 
@@ -13,14 +13,11 @@ public class Subtask2 {
         for (String param : params)
             res.add(Integer.parseInt(param));
 
-        if (res.size() > 1000000)
-            throw new Exception("Количество элементов массива превышает лимит!");
-
         in.close();
         return res;
     }
 
-    public static void findMinAndMax(List<Integer> data) {
+    public void findMinAndMax(List<Integer> data) {
         Stream.Builder<Integer> streamBuilder = Stream.builder();
         for (Integer num : data)
             streamBuilder.add(num);
@@ -35,7 +32,7 @@ public class Subtask2 {
         System.out.println("Третий наименьший элемент: " + numList.get(2));
     }
 
-    public static void main(String[] args) {
+    public void run() {
         try {
             List<Integer> data = inputData();
             findMinAndMax(data);
@@ -46,5 +43,10 @@ public class Subtask2 {
         catch (Exception e) {
             System.out.println("Ошибка: " + e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        Subtask2 subtask2 = new Subtask2();
+        subtask2.run();
     }
 }
