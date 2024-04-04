@@ -11,8 +11,8 @@ public class Main {
 
     private void getFile() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите название файла, из которого считать данные (по умолчанию Shares.txt): ");
-        String fileName = in.nextLine();
+        System.out.print("Введите название файла, из которого считать данные (по умолчанию " + dataFile + "): ");
+        fileName = in.nextLine();
 
         if (fileName.isEmpty())
             fileName = dataFile;
