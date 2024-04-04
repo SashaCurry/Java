@@ -6,7 +6,7 @@ public class Subtask3 {
     private final int codeRussianSymbolsStart = 1040;
     private final int codeRussianSymbolsEnd = 1105;
     private final double millisecondsPerSecond = 1000;
-    private final int count = 100_00;
+    private final int count = 100_000;
 
     private String generateString() {
         char[] res = new char[10];
