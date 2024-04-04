@@ -35,11 +35,8 @@ public class Subtask1 {
     }
 
     private void calculateDifference() {
-        final double MilPerDay = 1000 * 60 * 60 * 24;
-        if (date1.after(date2))
-            countDays = Math.round((date1.getTime() - date2.getTime()) / MilPerDay);
-        else
-            countDays = Math.round((date2.getTime() - date1.getTime()) / MilPerDay);
+        final double millisecondsPerDay = 1000 * 60 * 60 * 24;
+        countDays = Math.abs(Math.round((date1.getTime() - date2.getTime()) / millisecondsPerDay));
     }
 
     public void run() {
