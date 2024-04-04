@@ -6,11 +6,10 @@ import java.util.*;
 public class Main {
     private String fileName;
     private ArrayList<Company> companies = new ArrayList<>();
+    private final String dataFile = "Shares.txt";
+    private final String formatTXT = ".txt";
 
     private void getFile() {
-        final String dataFile = "Shares.txt";
-        final String formatTXT = ".txt";
-
         Scanner in = new Scanner(System.in);
         System.out.print("Введите название файла, из которого считать данные (по умолчанию Shares.txt): ");
         String fileName = in.nextLine();
