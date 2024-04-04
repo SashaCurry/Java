@@ -6,12 +6,13 @@ public class Subtask3 {
     private final int codeRussianSymbolsStart = 1040;
     private final int codeRussianSymbolsEnd = 1105;
     private final double millisecondsPerSecond = 1000;
-    private final int count = 100_000;
+    private final int countSymbols = 10;
+    private final int countContacenate = 100_000;
 
     private String generateString() {
-        char[] res = new char[10];
+        char[] res = new char[countSymbols];
         Random rand = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < countSymbols; i++) {
             res[i] = (char)rand.nextInt(codeRussianSymbolsStart, codeRussianSymbolsEnd);
         }
         return new String(res);
@@ -20,7 +21,7 @@ public class Subtask3 {
     private long testString() {
         String str = "";
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 100_000; i++)
+        for (int i = 0; i < countContacenate; i++)
             str += generateString();
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
@@ -29,7 +30,7 @@ public class Subtask3 {
     private long testStringBuffer() {
         StringBuffer str = new StringBuffer();
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 100_000; i++)
+        for (int i = 0; i < countContacenate; i++)
             str.append(generateString());
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
@@ -38,7 +39,7 @@ public class Subtask3 {
     private long testStringBuilder() {
         StringBuilder str = new StringBuilder();
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 100_000; i++)
+        for (int i = 0; i < countContacenate; i++)
             str.append(generateString());
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
