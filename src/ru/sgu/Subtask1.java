@@ -6,6 +6,7 @@ import java.util.*;
 public class Subtask1 {
     private Date date1, date2;
     private long countDays;
+    final double millisecondsPerDay = 1000 * 60 * 60 * 24;
 
     private boolean checkCorrectDate(String date) {
         String[] mas = date.split(" ");
@@ -35,7 +36,6 @@ public class Subtask1 {
     }
 
     private void calculateDifference() {
-        final double millisecondsPerDay = 1000 * 60 * 60 * 24;
         countDays = Math.abs(Math.round((date1.getTime() - date2.getTime()) / millisecondsPerDay));
     }
 

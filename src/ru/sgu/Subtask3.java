@@ -3,10 +3,12 @@ package ru.sgu;
 import java.util.*;
 
 public class Subtask3 {
-    private String generateString() {
-        final int codeRussianSymbolsStart = 1040;
-        final int codeRussianSymbolsEnd = 1105;
+    private final int codeRussianSymbolsStart = 1040;
+    private final int codeRussianSymbolsEnd = 1105;
+    private final double millisecondsPerSecond = 1000;
+    private final int count = 100_00;
 
+    private String generateString() {
         char[] res = new char[10];
         Random rand = new Random();
         for (int i = 0; i < 10; i++) {
@@ -44,18 +46,17 @@ public class Subtask3 {
 
     public static void main(String[] args) {
         Subtask3 subtask3 = new Subtask3();
-        final double millisecondsPerSecond = 1000;
 
         long speedString = subtask3.testString();
         System.out.print("Скорость выполнения с типом String: ");
-        System.out.println(speedString + "мс = " + Math.round(speedString / millisecondsPerSecond) + "с");
+        System.out.println(speedString + "мс = " + Math.round(speedString / subtask3.millisecondsPerSecond) + "с");
 
         long speedStringBuffer = subtask3.testStringBuffer();
         System.out.print("Скорость выполнения с типом StringBuffer: ");
-        System.out.println(speedStringBuffer + "мс = " + Math.round(speedStringBuffer / millisecondsPerSecond) + "c");
+        System.out.println(speedStringBuffer + "мс = " + Math.round(speedStringBuffer / subtask3.millisecondsPerSecond) + "c");
 
         long speedStringBuilder = subtask3.testStringBuilder();
         System.out.print("Скорость выполнения с типом StringBuilder: ");
-        System.out.println(speedStringBuilder + "мс = " + Math.round(speedStringBuilder / millisecondsPerSecond) + "c");
+        System.out.println(speedStringBuilder + "мс = " + Math.round(speedStringBuilder / subtask3.millisecondsPerSecond) + "c");
     }
 }
