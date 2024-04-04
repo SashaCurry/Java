@@ -8,14 +8,17 @@ public class Main {
     private ArrayList<Company> companies = new ArrayList<>();
 
     private void getFile() {
+        final String dataFile = "Shares.txt";
+        final String formatTXT = ".txt";
+
         Scanner in = new Scanner(System.in);
         System.out.print("Введите название файла, из которого считать данные (по умолчанию Shares.txt): ");
         String fileName = in.nextLine();
 
         if (fileName.isEmpty())
-            fileName = "Shares.txt";
-        else if (!fileName.endsWith(".txt"))
-            fileName = fileName + ".txt";
+            fileName = dataFile;
+        else if (!fileName.endsWith(formatTXT))
+            fileName = fileName + formatTXT;
 
         in.close();
         this.fileName = fileName;
