@@ -8,29 +8,24 @@ public class Main {
     private final String url = "jdbc:postgresql://localhost:5432/task7";
     private final String library = "org.postgresql.Driver";
 
-    private void subtask1(Connection connection) throws SQLException {
-        Statement statement = connection.createStatement();
+    private void subtask1(Statement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM employeesAge WHERE age > 20");
         System.out.println("Сотрудники, чей возраст больше 20: ");
         while (resultSet.next())
             System.out.println("\t" + resultSet.getString(2));
         resultSet.close();
-        statement.close();
     }
 
-    private void subtask2(Connection connection) throws SQLException {
-        Statement statement = connection.createStatement();
+    private void subtask2(Statement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT departmentName, AVG(salary) FROM departmentSalary" +
                                                      " GROUP BY departmentName");
         System.out.println("\nСредняя зарплата по каждому отделу: ");
         while (resultSet.next())
             System.out.println("\t" + resultSet.getString(1) + " " + resultSet.getString(2));
         resultSet.close();
-        statement.close();
     }
 
-    private void subtask3(Connection connection) throws SQLException {
-        Statement statement = connection.createStatement();
+    private void subtask3(Statement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT departmentEmployee.employeeName, " +
                                                      "departmentLocation.departmentName, " +
                                                      "departmentLocation.location FROM " +
@@ -42,17 +37,19 @@ public class Main {
             System.out.println("\t" + resultSet.getString(1) + " " + resultSet.getString(2) +
                                " " + resultSet.getString(3));
         resultSet.close();
-        statement.close();
     }
 
     public void run() {
         try {
             Class.forName(library);
             Connection connection = DriverManager.getConnection(url, username, password);
+            Statement statement = connection.createStatement();
 
-            subtask1(connection);
-            subtask2(connection);
-            subtask3(connection);
+            subtask1(statement);
+            subtask2(statement);
+            subtask3(statement);
+
+            statement.close();
             connection.close();
         }
         catch (SQLException e) {
